@@ -65,3 +65,16 @@ C:\Users\Administrator\Desktop\gamaSensorTestSuit\gamaSensorTestSuit\CO2-CO-Sens
 C:\Users\Administrator\Desktop\gamaSensorTestSuit\gamaSensorTestSuit\CO2-CO-Sensor\obj\Debug\Gama_Sensor_Reader.exe
 C:\Users\Administrator\Desktop\gamaSensorTestSuit\gamaSensorTestSuit\CO2-CO-Sensor\obj\Debug\Gama_Sensor_Reader.pdb
 C:\Users\Administrator\Desktop\gamaSensorTestSuit\gamaSensorTestSuit\CO2-CO-Sensor\obj\Debug\Gama_Sensor_Reader.exe.config
+D:\personalWork\C#\gamaSensorTestSuit\zhbsGamaSensor\CO2-CO-Sensor\bin\Debug\Gama_Sensor_Reader.exe.config
+D:\personalWork\C#\gamaSensorTestSuit\zhbsGamaSensor\CO2-CO-Sensor\bin\Debug\Gama_Sensor_Reader.exe
+D:\personalWork\C#\gamaSensorTestSuit\zhbsGamaSensor\CO2-CO-Sensor\bin\Debug\Gama_Sensor_Reader.pdb
+D:\personalWork\C#\gamaSensorTestSuit\zhbsGamaSensor\CO2-CO-Sensor\bin\Debug\System.IO.Ports.dll
+D:\personalWork\C#\gamaSensorTestSuit\zhbsGamaSensor\CO2-CO-Sensor\bin\Debug\System.IO.Ports.xml
+D:\personalWork\C#\gamaSensorTestSuit\zhbsGamaSensor\CO2-CO-Sensor\obj\Debug\JTGB-UF-7609 Config Software.csproj.AssemblyReference.cache
+D:\personalWork\C#\gamaSensorTestSuit\zhbsGamaSensor\CO2-CO-Sensor\obj\Debug\JTGB_UF_7609_Config_Software.Form1.resources
+D:\personalWork\C#\gamaSensorTestSuit\zhbsGamaSensor\CO2-CO-Sensor\obj\Debug\Gama_Sensor_Reader.Properties.Resources.resources
+D:\personalWork\C#\gamaSensorTestSuit\zhbsGamaSensor\CO2-CO-Sensor\obj\Debug\JTGB-UF-7609 Config Software.csproj.GenerateResource.cache
+D:\personalWork\C#\gamaSensorTestSuit\zhbsGamaSensor\CO2-CO-Sensor\obj\Debug\JTGB-UF-7609 Config Software.csproj.CoreCompileInputs.cache
+D:\personalWork\C#\gamaSensorTestSuit\zhbsGamaSensor\CO2-CO-Sensor\obj\Debug\JTGB-UF-.3AB2426B.Up2Date
+D:\personalWork\C#\gamaSensorTestSuit\zhbsGamaSensor\CO2-CO-Sensor\obj\Debug\Gama_Sensor_Reader.exe
+D:\personalWork\C#\gamaSensorTestSuit\zhbsGamaSensor\CO2-CO-Sensor\obj\Debug\Gama_Sensor_Reader.pdb

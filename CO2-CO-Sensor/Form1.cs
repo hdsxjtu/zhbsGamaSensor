@@ -21,11 +21,13 @@ namespace JTGB_UF_7609_Config_Software
     public partial class Form1 : Form
     {
         private byte sensorID = 0;
+        private byte readBackFlag = 0;
         private int packetCount = 0; // 记录数据包数量
         private StreamWriter csvWriter;
         private string csvFilePath;
         private bool isFirstWrite = true; // 标记是否首次写入（用于添加标题）
         private int autoRecordFlag = 0; // 记录数据点数量
+        private int autoAskFlag = 0;    // 记录数据点数量
         private bool isButton1Turn = true; // 用于跟踪当前执行哪个按钮
         private SerialPort serialPort;
         public Form1()
@@ -116,10 +118,11 @@ namespace JTGB_UF_7609_Config_Software
                     // 将字节数组转换为16进制字符串
                     string hexData = BitConverter.ToString(buffer).Replace("-", " ");  // 以空格分隔
                     ushort crcReceived = BitConverter.ToUInt16(buffer, byteCount - 2);
-                    ushort crc16val = CalculateCrc(buffer, byteCount-2);
+                    ushort crc16val = CalculateCrc(buffer, byteCount - 2);
                     // 比较计算的 CRC 和接收到的 CRC
                     if (crc16val == crcReceived)
                     {
+                        readBackFlag = 1;
                         Console.WriteLine("CRC 校验通过！");
                         // 如果是在 UI 线程以外的线程中，需要使用 Invoke 来更新 TextBox
                         if (textBox2.InvokeRequired)
@@ -149,7 +152,7 @@ namespace JTGB_UF_7609_Config_Software
                         Invoke((MethodInvoker)(() =>
                         {
 
-                            if (buffer[0]== sensorID)
+                            if (buffer[0] == sensorID)
                             {
                                 Byte[] ramData = new Byte[4];
                                 ramData[3] = buffer[3]; ramData[2] = buffer[4]; ramData[1] = buffer[5]; ramData[0] = buffer[6];
@@ -157,13 +160,13 @@ namespace JTGB_UF_7609_Config_Software
                                 if (temp < 1000)
                                 {
                                     textBox1.Text = temp.ToString("f3");
-                                    label1.Text = "uSv/h     实时剂量率";
+                                    label1.Text = "uSv/h";
                                 }
                                 else
                                 {
                                     temp = temp / 1000;
                                     textBox1.Text = temp.ToString("f3");
-                                    label1.Text = "mSv/h     实时剂量率";
+                                    label1.Text = "mSv/h";
                                 }
                                 ramData[3] = buffer[7]; ramData[2] = buffer[8]; ramData[1] = buffer[9]; ramData[0] = buffer[10];
                                 temp = BitConverter.ToSingle(ramData, 0);
@@ -213,7 +216,7 @@ namespace JTGB_UF_7609_Config_Software
                                 temp = BitConverter.ToUInt32(ramData, 0);
                                 textBox14.Text = temp.ToString("f0"); //info
                             }
-  
+
 
                         }));
 
@@ -240,14 +243,14 @@ namespace JTGB_UF_7609_Config_Software
             }
         }
 
-        private void WriteToCsv(byte addr,int value)
+        private void WriteToCsv(byte addr, int value)
         {
             try
             {
                 if (isFirstWrite)
                 {
                     // 写入标题
-                    string header = "年月日,时分秒,地址,类型,采样值，单位";
+                    string header = "年月日,时分秒,地址,实时剂量率,cps1,cps2,温度,";
                     csvWriter.WriteLine(header);
                     isFirstWrite = false;
                 }
@@ -255,20 +258,7 @@ namespace JTGB_UF_7609_Config_Software
                 // 写入时间戳和数据
                 string date = DateTime.Now.ToString("yyyy-MM-dd");
                 string time = DateTime.Now.ToString("HH:mm:ss");
-                string type = "";
-                if (addr == 0x01)
-                {
-                    type = "CO";
-                }
-                else if (addr == 0x02)
-                {
-                    type = "CO2";
-                }
-                else
-                {
-                    type = "UNKNOWN";
-                }
-                string dataLine = $"{date},{time},{string.Join(",",addr.ToString(), type, value.ToString(),"ppm")}";
+                string dataLine = $"{date},{time},{string.Join(",", addr.ToString(), textBox1.Text+ label1.Text, textBox5.Text, textBox6.Text, textBox7.Text)}";
                 csvWriter.WriteLine(dataLine);
                 csvWriter.Flush();
             }
@@ -296,18 +286,56 @@ namespace JTGB_UF_7609_Config_Software
 
             if (serialPort.IsOpen)
             {
-                byteArray[0] = (byte)value; 
-                byteArray[1] = 0x03; 
+                byteArray[0] = (byte)value;
+                byteArray[1] = 0x03;
                 byteArray[2] = 0x00;
                 byteArray[3] = 0x00;
                 byteArray[4] = 0x00;
                 byteArray[5] = 0x1D;
-                ushort crc16val=CalculateCrc(byteArray, 6);      
+                ushort crc16val = CalculateCrc(byteArray, 6);
                 byteArray[6] = (byte)(crc16val & 0xFF);
                 byteArray[7] = (byte)(crc16val >> 8);
                 serialPort.Write(byteArray, 0, byteArray.Length);
             }
         }
+
+        private void SendNewDetectorAddrSet(byte addr)
+        {
+            byte[] byteArray = new byte[8];
+            if (serialPort.IsOpen)
+            {
+                byteArray[0] = (byte)(comboBox1.SelectedIndex+1);
+                byteArray[1] = 0x06;
+                byteArray[2] = 0x00;
+                byteArray[3] = 0x00;
+                byteArray[4] = 0x41;
+                byteArray[5] = addr;
+                ushort crc16val = CalculateCrc(byteArray, 6);
+                byteArray[6] = (byte)(crc16val & 0xFF);
+                byteArray[7] = (byte)(crc16val >> 8);
+                serialPort.Write(byteArray, 0, byteArray.Length);
+            }
+        }
+
+        private void SendOldDetectorAddrSet(byte addr)
+        {
+            byte[] byteArray = new byte[8];
+            if (serialPort.IsOpen)
+            {
+                byteArray[0] = (byte)(comboBox1.SelectedIndex + 1);
+                byteArray[1] = 0x06;
+                byteArray[2] = 0x00;
+                byteArray[3] = 0x00;
+                byteArray[4] = 0x56;
+                byteArray[5] = addr;
+                ushort crc16val = CalculateCrc(byteArray, 6);
+                byteArray[6] = (byte)(crc16val & 0xFF);
+                byteArray[7] = (byte)(crc16val >> 8);
+                serialPort.Write(byteArray, 0, byteArray.Length);
+            }
+        }
+
+
         // 计算CRC16
         // CRC16 Modbus RTU 计算，带长度参数
         public static ushort CalculateCrc(byte[] data, int length)
@@ -335,15 +363,20 @@ namespace JTGB_UF_7609_Config_Software
 
         private async void button1_Click(object sender, EventArgs e)
         {
+            autoAskFlag = 0;
             textBox2.Clear();
             if (serialPort.IsOpen)
             {
-                sensorID = 1;
-                SendData(sensorID);
+                sensorID = (byte)(comboBox1.SelectedIndex + 1);
+                SendData((ushort)(comboBox1.SelectedIndex + 1));
                 // 异步等待100毫秒
                 await Task.Delay(100);
                 // 读取串口回传数据
                 ReadSerialData();
+                button7.Enabled = true;
+                comboBox1.Enabled = true;
+                comboBox2.Enabled = true;
+                comboBox3.Enabled = true;
             }
             else
             {
@@ -371,53 +404,34 @@ namespace JTGB_UF_7609_Config_Software
             button6.Enabled = true;
             button5.Enabled = false;
             autoRecordFlag = 0;
-            button4.Enabled = true;
+            autoAskFlag = 0;
             button1.Enabled = true;
+            // 初始化 comboBox1，添加 1 到 10
+            for (int i = 1; i <= 10; i++)
+            {
+                comboBox1.Items.Add(i);
+                comboBox2.Items.Add(i);
+                comboBox3.Items.Add(i);
+            }
+            // 可选：设置默认选中项（例如第一个值：1）
+            comboBox1.SelectedIndex = 0;
+
+
+
         }
 
-        private async void button4_Click(object sender, EventArgs e)
+
+        private async void Timer_Tick(object sender, EventArgs e)
         {
-            textBox2.Clear();
-            if (serialPort.IsOpen)
+            if (autoAskFlag == 1 && serialPort.IsOpen)
             {
-                SendData(1);
+                textBox2.Clear();
+                SendData((ushort)(comboBox1.SelectedIndex+1));
                 // 异步等待100毫秒
                 await Task.Delay(100);
                 // 读取串口回传数据
                 ReadSerialData();
             }
-            else
-            {
-                MessageBox.Show("请打开串口");
-            }
-        }
-
-        private async void Timer_Tick(object sender, EventArgs e)
-        {
-
-            /*
-            if (autoRecordFlag == 1 && serialPort.IsOpen)
-            {
-                if (isButton1Turn)
-                {
-                    SendData(2);
-                    // 异步等待100毫秒
-                    await Task.Delay(100);
-                    // 读取串口回传数据
-                    ReadSerialData();
-                }
-                else
-                {
-                    SendData(1);
-                    // 异步等待100毫秒
-                    await Task.Delay(100);
-                    // 读取串口回传数据
-                    ReadSerialData();
-                }
-                isButton1Turn = !isButton1Turn; // 切换到另一个按钮
-            }
-            */
-
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -437,10 +451,9 @@ namespace JTGB_UF_7609_Config_Software
                     label3.Text = "CSV file opened: " + csvFilePath;
                     button6.Enabled = false;
                     button5.Enabled = true;
-                    autoRecordFlag  = 1;
-                    button4.Enabled = false;
-                    button1.Enabled = false;
-                    packetCount     = 0;
+                    autoRecordFlag = 1;
+                    button1.Enabled = true;
+                    packetCount = 0;
                     // 在UI线程更新label2（防止跨线程访问异常）
                     this.Invoke((MethodInvoker)delegate
                     {
@@ -463,15 +476,90 @@ namespace JTGB_UF_7609_Config_Software
                     csvWriter = null;
                     label3.Text = "CSV file closed";
                     button1.Enabled = true;
-                    button4.Enabled = true;
                     button1.Enabled = true;
-                    autoRecordFlag  = 0;
+                    autoRecordFlag = 0;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show($"关闭 CSV 失败: {ex.Message}");
                 }
             }
+        }
+
+
+        private async void newDector_Click(object sender, EventArgs e)
+        {
+            if (serialPort.IsOpen)
+            {              
+                SendNewDetectorAddrSet((byte)(comboBox2.SelectedIndex + 1));
+                // 异步等待100毫秒
+                await Task.Delay(100);
+                // 读取串口回传数据
+                SendData((ushort)(comboBox2.SelectedIndex + 1));
+                sensorID = (byte)(comboBox2.SelectedIndex + 1);
+                readBackFlag = 0;
+
+                // 异步等待100毫秒
+                await Task.Delay(100);
+                // 读取串口回传数据
+                ReadSerialData();
+
+                if (readBackFlag > 0)
+                {
+                    MessageBox.Show("地址修改成功");
+                    comboBox1.SelectedIndex = comboBox2.SelectedIndex;
+                }
+                else
+                {
+                    MessageBox.Show("地址修改失败");
+                }
+            }
+        }
+        private async void oldDector_Click(object sender, EventArgs e)
+        {
+            if (serialPort.IsOpen)
+            {
+ 
+                SendOldDetectorAddrSet((byte)(comboBox3.SelectedIndex + 1));
+                // 异步等待100毫秒
+                await Task.Delay(100);
+                // 读取串口回传数据
+                SendData((ushort)(comboBox3.SelectedIndex + 1));
+                sensorID = (byte)(comboBox3.SelectedIndex + 1);
+                readBackFlag = 0;
+
+                // 异步等待100毫秒
+                await Task.Delay(100);
+                // 读取串口回传数据
+                ReadSerialData();
+
+                if (readBackFlag > 0)
+                {
+                    MessageBox.Show("地址修改成功");
+                    comboBox1.SelectedIndex = comboBox3.SelectedIndex;
+                }
+                else
+                {
+                    MessageBox.Show("地址修改失败");
+                }
+            }
+            else
+            {
+                MessageBox.Show("请打开串口");
+            }
+
+
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            autoAskFlag = 1;
+            button7.Enabled = false;
+            comboBox1.Enabled = false;
+            comboBox2.Enabled = false;
+            comboBox3.Enabled = false;
+
         }
     }
 }
