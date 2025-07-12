@@ -20,6 +20,7 @@ namespace JTGB_UF_7609_Config_Software
 {
     public partial class Form1 : Form
     {
+        private bool enterPressed = false; // 标志：是否按下回车键
         private byte sensorID = 0;
         private byte readBackFlag = 0;
         private int packetCount = 0; // 记录数据包数量
@@ -416,8 +417,41 @@ namespace JTGB_UF_7609_Config_Software
             // 可选：设置默认选中项（例如第一个值：1）
             comboBox1.SelectedIndex = 0;
 
+            // 新增 KeyDown 事件
+            textBox3.KeyDown += TextBox3_KeyDown;
+            textBox16.KeyDown += TextBox16_KeyDown;
+            textBox18.KeyDown += TextBox18_KeyDown;
+        }
 
-
+        private void TextBox3_KeyDown(object sender, KeyEventArgs e)
+        {
+            // 按下回车键时设置标志
+            if (e.KeyCode == Keys.Enter)
+            {
+                enterPressed = true;
+                e.SuppressKeyPress = true; // 防止回车键触发其他行为
+                processingtextbox3();
+            }
+        }
+        private void TextBox16_KeyDown(object sender, KeyEventArgs e)
+        {
+            // 按下回车键时设置标志
+            if (e.KeyCode == Keys.Enter)
+            {
+                enterPressed = true;
+                e.SuppressKeyPress = true; // 防止回车键触发其他行为
+                processingtextbox16();
+            }
+        }
+        private void TextBox18_KeyDown(object sender, KeyEventArgs e)
+        {
+            // 按下回车键时设置标志
+            if (e.KeyCode == Keys.Enter)
+            {
+                enterPressed = true;
+                e.SuppressKeyPress = true; // 防止回车键触发其他行为
+                processingtextbox18();
+            }
         }
 
 
@@ -560,6 +594,180 @@ namespace JTGB_UF_7609_Config_Software
             comboBox2.Enabled = false;
             comboBox3.Enabled = false;
 
+        }
+
+
+        private async void processingtextbox3()
+        {
+            float[] parameter = new float[1];
+            byte[] byteArray = new byte[13];
+            // 仅在回车键触发时执行逻辑
+            if (enterPressed)
+            {
+                enterPressed = false; // 重置标志
+                if (string.IsNullOrEmpty(textBox3.Text))
+                {
+                    MessageBox.Show("输入参数为空");
+                }
+                else
+                {
+                    if (serialPort.IsOpen)
+                    {
+                        byteArray[0] = (byte)(comboBox1.SelectedIndex + 1);
+                        byteArray[1] = 0x10;
+                        byteArray[2] = 0x00;
+                        byteArray[3] = 0x02;
+                        byteArray[4] = 0x00;
+                        byteArray[5] = 0x02;
+                        byteArray[6] = 0x04;
+                        parameter[0] = float.Parse(textBox3.Text);
+                        byte[] var = BitConverter.GetBytes(parameter[0]);
+                        byteArray[10] = var[0];
+                        byteArray[9] = var[1];
+                        byteArray[8] = var[2];
+                        byteArray[7] = var[3];
+                        ushort crc16val = CalculateCrc(byteArray, 6);
+                        byteArray[11] = (byte)(crc16val & 0xFF);
+                        byteArray[12] = (byte)(crc16val >> 8);
+                        serialPort.Write(byteArray, 0, byteArray.Length);
+
+                        // 异步等待100毫秒
+                        await Task.Delay(200);
+                        // 读取串口回传数据
+                        SendData((ushort)(comboBox1.SelectedIndex + 1));
+                        // 异步等待100毫秒
+                        await Task.Delay(100);
+                        // 读取串口回传数据
+                        ReadSerialData();
+
+                        if (float.Parse(textBox3.Text) == float.Parse(textBox4.Text))
+                        {
+                            MessageBox.Show("参数修改成功");
+                        }
+                        else
+                        {
+                            MessageBox.Show("参数修改失败");
+                        }
+
+                    }
+                }
+            }
+        }
+
+        private async void processingtextbox16()
+        {
+            float[] parameter = new float[1];
+            byte[] byteArray = new byte[13];
+
+            // 仅在回车键触发时执行逻辑
+            if (enterPressed)
+            {
+                enterPressed = false; // 重置标志
+                if (string.IsNullOrEmpty(textBox16.Text))
+                {
+                    MessageBox.Show("输入参数为空");
+                }
+                else
+                {
+                    if (serialPort.IsOpen)
+                    {
+                        byteArray[0] = (byte)(comboBox1.SelectedIndex + 1);
+                        byteArray[1] = 0x10;
+                        byteArray[2] = 0x00;
+                        byteArray[3] = 0x03;
+                        byteArray[4] = 0x00;
+                        byteArray[5] = 0x02;
+                        byteArray[6] = 0x04;
+                        parameter[0] = float.Parse(textBox16.Text);
+                        byte[] var = BitConverter.GetBytes(parameter[0]);
+                        byteArray[10] = var[0];
+                        byteArray[9] = var[1];
+                        byteArray[8] = var[2];
+                        byteArray[7] = var[3];
+                        ushort crc16val = CalculateCrc(byteArray, 6);
+                        byteArray[11] = (byte)(crc16val & 0xFF);
+                        byteArray[12] = (byte)(crc16val >> 8);
+                        serialPort.Write(byteArray, 0, byteArray.Length);
+
+                        // 异步等待100毫秒
+                        await Task.Delay(200);
+                        // 读取串口回传数据
+                        SendData((ushort)(comboBox1.SelectedIndex + 1));
+                        // 异步等待100毫秒
+                        await Task.Delay(100);
+                        // 读取串口回传数据
+                        ReadSerialData();
+
+                        if (float.Parse(textBox16.Text) == float.Parse(textBox15.Text))
+                        {
+                            MessageBox.Show("参数修改成功");
+                        }
+                        else
+                        {
+                            MessageBox.Show("参数修改失败");
+                        }
+
+                    }
+                }
+            }
+        }
+
+        private async void processingtextbox18()
+        {
+            float[] parameter = new float[1];
+            byte[] byteArray = new byte[13];
+
+            // 仅在回车键触发时执行逻辑
+            if (enterPressed)
+            {
+                enterPressed = false; // 重置标志
+                if (string.IsNullOrEmpty(textBox18.Text))
+                {
+                    MessageBox.Show("输入参数为空");
+                }
+                else
+                {
+                    if (serialPort.IsOpen)
+                    {
+                        byteArray[0] = (byte)(comboBox1.SelectedIndex + 1);
+                        byteArray[1] = 0x10;
+                        byteArray[2] = 0x00;
+                        byteArray[3] = 0x02;
+                        byteArray[4] = 0x00;
+                        byteArray[5] = 0x02;
+                        byteArray[6] = 0x04;
+                        parameter[0] = float.Parse(textBox18.Text);
+                        byte[] var = BitConverter.GetBytes(parameter[0]);
+                        byteArray[10] = var[0];
+                        byteArray[9] = var[1];
+                        byteArray[8] = var[2];
+                        byteArray[7] = var[3];
+                        ushort crc16val = CalculateCrc(byteArray, 6);
+                        byteArray[11] = (byte)(crc16val & 0xFF);
+                        byteArray[12] = (byte)(crc16val >> 8);
+                        serialPort.Write(byteArray, 0, byteArray.Length);
+
+                        // 异步等待100毫秒
+                        await Task.Delay(200);
+                        // 读取串口回传数据
+                        SendData((ushort)(comboBox1.SelectedIndex + 1));
+                        // 异步等待100毫秒
+                        await Task.Delay(100);
+                        // 读取串口回传数据
+                        ReadSerialData();
+
+                        if (float.Parse(textBox18.Text) == float.Parse(textBox4.Text))
+                        {
+                            MessageBox.Show("参数修改成功");
+                        }
+                        else
+                        {
+                            MessageBox.Show("参数修改失败");
+                        }
+
+                    }
+                }
+            }
         }
     }
 }

@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "D:\\personalWork\\C#\\gamaSensorTestSuit\\zhbsGamaSensor\\CO2-CO-Sensor\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{80034044-BB80-4E5F-9AA3-FDCB60EB4191}|JTGB-UF-7609 Config Software.csproj|D:\\personalWork\\C#\\gamaSensorTestSuit\\zhbsGamaSensor\\CO2-CO-Sensor\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{80034044-BB80-4E5F-9AA3-FDCB60EB4191}|JTGB-UF-7609 Config Software.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{80034044-BB80-4E5F-9AA3-FDCB60EB4191}|JTGB-UF-7609 Config Software.csproj|D:\\personalWork\\C#\\gamaSensorTestSuit\\zhbsGamaSensor\\CO2-CO-Sensor\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{80034044-BB80-4E5F-9AA3-FDCB60EB4191}|JTGB-UF-7609 Config Software.csproj|solutionrelative:form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{80034044-BB80-4E5F-9AA3-FDCB60EB4191}|JTGB-UF-7609 Config Software.csproj|d:\\personalwork\\c#\\gamasensortestsuit\\zhbsgamasensor\\co2-co-sensor\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{80034044-BB80-4E5F-9AA3-FDCB60EB4191}|JTGB-UF-7609 Config Software.csproj|D:\\personalWork\\C#\\gamaSensorTestSuit\\zhbsGamaSensor\\CO2-CO-Sensor\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{80034044-BB80-4E5F-9AA3-FDCB60EB4191}|JTGB-UF-7609 Config Software.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{80034044-BB80-4E5F-9AA3-FDCB60EB4191}|JTGB-UF-7609 Config Software.csproj|D:\\personalWork\\C#\\gamaSensorTestSuit\\zhbsGamaSensor\\CO2-CO-Sensor\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{80034044-BB80-4E5F-9AA3-FDCB60EB4191}|JTGB-UF-7609 Config Software.csproj|solutionrelative:form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{80034044-BB80-4E5F-9AA3-FDCB60EB4191}|JTGB-UF-7609 Config Software.csproj|d:\\personalwork\\c#\\gamasensortestsuit\\zhbsgamasensor\\co2-co-sensor\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{80034044-BB80-4E5F-9AA3-FDCB60EB4191}|JTGB-UF-7609 Config Software.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 330,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
@@ -38,26 +38,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Form1.cs",
               "DocumentMoniker": "D:\\personalWork\\C#\\gamaSensorTestSuit\\zhbsGamaSensor\\CO2-CO-Sensor\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
               "ToolTip": "D:\\personalWork\\C#\\gamaSensorTestSuit\\zhbsGamaSensor\\CO2-CO-Sensor\\Form1.cs",
               "RelativeToolTip": "Form1.cs",
-              "ViewState": "AgIAAJsBAAAAAAAAAAD4v6sBAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAGUBAAAAAAAAAAAAwMEBAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-28T03:06:52.768Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Form1.Designer.cs",
               "DocumentMoniker": "D:\\personalWork\\C#\\gamaSensorTestSuit\\zhbsGamaSensor\\CO2-CO-Sensor\\Form1.Designer.cs",
               "RelativeDocumentMoniker": "Form1.Designer.cs",
-              "ToolTip": "D:\\personalWork\\C#\\gamaSensorTestSuit\\zhbsGamaSensor\\CO2-CO-Sensor\\Form1.Designer.cs",
-              "RelativeToolTip": "Form1.Designer.cs",
-              "ViewState": "AgIAAMsBAAAAAAAAAAAgwOEBAABIAAAAAAAAAA==",
+              "ToolTip": "D:\\personalWork\\C#\\gamaSensorTestSuit\\zhbsGamaSensor\\CO2-CO-Sensor\\Form1.Designer.cs*",
+              "RelativeToolTip": "Form1.Designer.cs*",
+              "ViewState": "AgIAACsCAAAAAAAAAAAewEUCAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-28T03:06:52.972Z",
               "EditorCaption": ""

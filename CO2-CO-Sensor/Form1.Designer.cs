@@ -75,6 +75,16 @@
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.textBox18 = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // comboBoxSerialPorts
@@ -135,13 +145,13 @@
             this.textBox2.Location = new System.Drawing.Point(7, 410);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(692, 49);
+            this.textBox2.Size = new System.Drawing.Size(566, 49);
             this.textBox2.TabIndex = 10;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(296, 395);
+            this.label2.Location = new System.Drawing.Point(209, 395);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(113, 12);
             this.label2.TabIndex = 11;
@@ -194,6 +204,10 @@
             this.label11.TabIndex = 42;
             this.label11.Text = "总计收到包数：";
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -206,7 +220,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(502, 47);
+            this.label4.Location = new System.Drawing.Point(613, 79);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(113, 12);
             this.label4.TabIndex = 47;
@@ -442,7 +456,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(502, 77);
+            this.label19.Location = new System.Drawing.Point(613, 117);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(113, 12);
             this.label19.TabIndex = 74;
@@ -469,7 +483,7 @@
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(617, 44);
+            this.comboBox2.Location = new System.Drawing.Point(726, 76);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(82, 20);
@@ -479,7 +493,7 @@
             // comboBox3
             // 
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(617, 74);
+            this.comboBox3.Location = new System.Drawing.Point(726, 114);
             this.comboBox3.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(82, 20);
@@ -495,11 +509,111 @@
             this.label21.TabIndex = 79;
             this.label21.Text = "实时剂量率";
             // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(613, 195);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(113, 12);
+            this.label22.TabIndex = 81;
+            this.label22.Text = "修改新探测器高报：";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(613, 156);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(113, 12);
+            this.label23.TabIndex = 80;
+            this.label23.Text = "修改新探测器低报：";
+            // 
+            // textBox3
+            // 
+            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox3.Location = new System.Drawing.Point(726, 150);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(82, 21);
+            this.textBox3.TabIndex = 85;
+            this.textBox3.Text = "0";
+            // 
+            // textBox16
+            // 
+            this.textBox16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox16.Location = new System.Drawing.Point(726, 193);
+            this.textBox16.Name = "textBox16";
+            this.textBox16.Size = new System.Drawing.Size(82, 21);
+            this.textBox16.TabIndex = 86;
+            this.textBox16.Text = "0";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(814, 156);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(35, 12);
+            this.label24.TabIndex = 87;
+            this.label24.Text = "uSv/h";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(814, 195);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(35, 12);
+            this.label25.TabIndex = 88;
+            this.label25.Text = "uSv/h";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(814, 237);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(35, 12);
+            this.label27.TabIndex = 93;
+            this.label27.Text = "uSv/h";
+            // 
+            // textBox18
+            // 
+            this.textBox18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox18.Location = new System.Drawing.Point(726, 231);
+            this.textBox18.Name = "textBox18";
+            this.textBox18.Size = new System.Drawing.Size(82, 21);
+            this.textBox18.TabIndex = 91;
+            this.textBox18.Text = "0";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(613, 237);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(113, 12);
+            this.label29.TabIndex = 89;
+            this.label29.Text = "修改老探测器报警：";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(711, 31);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(53, 12);
+            this.label30.TabIndex = 95;
+            this.label30.Text = "参数设置";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 516);
+            this.ClientSize = new System.Drawing.Size(862, 516);
+            this.Controls.Add(this.label30);
+            this.Controls.Add(this.label27);
+            this.Controls.Add(this.textBox18);
+            this.Controls.Add(this.label29);
+            this.Controls.Add(this.label25);
+            this.Controls.Add(this.label24);
+            this.Controls.Add(this.textBox16);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.label22);
+            this.Controls.Add(this.label23);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.comboBox2);
@@ -602,6 +716,16 @@
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox16;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.TextBox textBox18;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label30;
     }
 }
 
