@@ -626,7 +626,7 @@ namespace JTGB_UF_7609_Config_Software
                         byteArray[9] = var[1];
                         byteArray[8] = var[2];
                         byteArray[7] = var[3];
-                        ushort crc16val = CalculateCrc(byteArray, 6);
+                        ushort crc16val = CalculateCrc(byteArray, 11);
                         byteArray[11] = (byte)(crc16val & 0xFF);
                         byteArray[12] = (byte)(crc16val >> 8);
                         serialPort.Write(byteArray, 0, byteArray.Length);
@@ -684,7 +684,7 @@ namespace JTGB_UF_7609_Config_Software
                         byteArray[9] = var[1];
                         byteArray[8] = var[2];
                         byteArray[7] = var[3];
-                        ushort crc16val = CalculateCrc(byteArray, 6);
+                        ushort crc16val = CalculateCrc(byteArray, 11);
                         byteArray[11] = (byte)(crc16val & 0xFF);
                         byteArray[12] = (byte)(crc16val >> 8);
                         serialPort.Write(byteArray, 0, byteArray.Length);
@@ -742,7 +742,7 @@ namespace JTGB_UF_7609_Config_Software
                         byteArray[9] = var[1];
                         byteArray[8] = var[2];
                         byteArray[7] = var[3];
-                        ushort crc16val = CalculateCrc(byteArray, 6);
+                        ushort crc16val = CalculateCrc(byteArray, 11);
                         byteArray[11] = (byte)(crc16val & 0xFF);
                         byteArray[12] = (byte)(crc16val >> 8);
                         serialPort.Write(byteArray, 0, byteArray.Length);
