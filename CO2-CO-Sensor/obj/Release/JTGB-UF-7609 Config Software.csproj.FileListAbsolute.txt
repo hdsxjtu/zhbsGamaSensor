@@ -37,3 +37,16 @@ D:\personalWork\C#\CO2-CO\CO2-CO-Sensor\obj\Release\JTGB-UF-7609 Config Software
 D:\personalWork\C#\CO2-CO\CO2-CO-Sensor\obj\Release\JTGB-UF-.3AB2426B.Up2Date
 D:\personalWork\C#\CO2-CO\CO2-CO-Sensor\obj\Release\JTGB-UF-7609 Config Software.exe
 D:\personalWork\C#\CO2-CO\CO2-CO-Sensor\obj\Release\JTGB-UF-7609 Config Software.pdb
+C:\Users\Administrator\Desktop\gamaSensorTestSuit\gamaSensorTestSuit\CO2-CO-Sensor\bin\Release\Gama_Sensor_Reader.exe.config
+C:\Users\Administrator\Desktop\gamaSensorTestSuit\gamaSensorTestSuit\CO2-CO-Sensor\bin\Release\Gama_Sensor_Reader.exe
+C:\Users\Administrator\Desktop\gamaSensorTestSuit\gamaSensorTestSuit\CO2-CO-Sensor\bin\Release\Gama_Sensor_Reader.pdb
+C:\Users\Administrator\Desktop\gamaSensorTestSuit\gamaSensorTestSuit\CO2-CO-Sensor\bin\Release\System.IO.Ports.dll
+C:\Users\Administrator\Desktop\gamaSensorTestSuit\gamaSensorTestSuit\CO2-CO-Sensor\bin\Release\System.IO.Ports.xml
+C:\Users\Administrator\Desktop\gamaSensorTestSuit\gamaSensorTestSuit\CO2-CO-Sensor\obj\Release\JTGB-UF-7609 Config Software.csproj.AssemblyReference.cache
+C:\Users\Administrator\Desktop\gamaSensorTestSuit\gamaSensorTestSuit\CO2-CO-Sensor\obj\Release\JTGB_UF_7609_Config_Software.Form1.resources
+C:\Users\Administrator\Desktop\gamaSensorTestSuit\gamaSensorTestSuit\CO2-CO-Sensor\obj\Release\Gama_Sensor_Reader.Properties.Resources.resources
+C:\Users\Administrator\Desktop\gamaSensorTestSuit\gamaSensorTestSuit\CO2-CO-Sensor\obj\Release\JTGB-UF-7609 Config Software.csproj.GenerateResource.cache
+C:\Users\Administrator\Desktop\gamaSensorTestSuit\gamaSensorTestSuit\CO2-CO-Sensor\obj\Release\JTGB-UF-7609 Config Software.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\gamaSensorTestSuit\gamaSensorTestSuit\CO2-CO-Sensor\obj\Release\JTGB-UF-.3AB2426B.Up2Date
+C:\Users\Administrator\Desktop\gamaSensorTestSuit\gamaSensorTestSuit\CO2-CO-Sensor\obj\Release\Gama_Sensor_Reader.exe
+C:\Users\Administrator\Desktop\gamaSensorTestSuit\gamaSensorTestSuit\CO2-CO-Sensor\obj\Release\Gama_Sensor_Reader.pdb

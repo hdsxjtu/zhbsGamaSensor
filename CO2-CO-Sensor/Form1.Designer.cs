@@ -662,7 +662,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "陕西中核贝森电子科技有限公司---传感器测试软件";
+            this.Text = "陕西中核贝森电子科技有限公司---传感器测试软件V1.0";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
