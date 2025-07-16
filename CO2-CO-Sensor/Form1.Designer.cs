@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.comboBoxSerialPorts = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -91,7 +92,7 @@
             // 
             this.comboBoxSerialPorts.FormattingEnabled = true;
             this.comboBoxSerialPorts.Location = new System.Drawing.Point(8, 8);
-            this.comboBoxSerialPorts.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxSerialPorts.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBoxSerialPorts.Name = "comboBoxSerialPorts";
             this.comboBoxSerialPorts.Size = new System.Drawing.Size(82, 20);
             this.comboBoxSerialPorts.TabIndex = 2;
@@ -99,7 +100,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(18, 52);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(108, 27);
             this.button1.TabIndex = 5;
@@ -110,7 +111,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(93, 8);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(81, 21);
             this.button2.TabIndex = 6;
@@ -121,7 +122,7 @@
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(178, 8);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
+            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(83, 21);
             this.button3.TabIndex = 7;
@@ -229,7 +230,7 @@
             // button7
             // 
             this.button7.Location = new System.Drawing.Point(18, 89);
-            this.button7.Margin = new System.Windows.Forms.Padding(2);
+            this.button7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(108, 27);
             this.button7.TabIndex = 48;
@@ -466,7 +467,7 @@
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(225, 56);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(82, 20);
             this.comboBox1.TabIndex = 75;
@@ -484,7 +485,7 @@
             // 
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(726, 76);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(82, 20);
             this.comboBox2.TabIndex = 77;
@@ -494,7 +495,7 @@
             // 
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Location = new System.Drawing.Point(726, 114);
-            this.comboBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(82, 20);
             this.comboBox3.TabIndex = 78;
@@ -603,7 +604,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(862, 516);
+            this.ClientSize = new System.Drawing.Size(862, 512);
             this.Controls.Add(this.label30);
             this.Controls.Add(this.label27);
             this.Controls.Add(this.textBox18);
@@ -659,7 +660,8 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBoxSerialPorts);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "陕西中核贝森电子科技有限公司---传感器测试软件V1.0";
