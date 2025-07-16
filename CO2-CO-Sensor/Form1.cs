@@ -38,7 +38,7 @@ namespace JTGB_UF_7609_Config_Software
             serialPort = new SerialPort();
             button3.Enabled = false;
             // 初始化定时器
-            timer1.Interval = 500; // 每1秒触发一次
+            timer1.Interval = 1000; // 每1秒触发一次
             timer1.Tick += Timer_Tick; // 绑定事件处理函数
             timer1.Start(); // 启动定时器
         }
